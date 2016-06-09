@@ -47,22 +47,22 @@ module.exports = {
       locations = _.indexBy(locations, 'virtualhost');
       virtualhosts = _.indexBy(virtualhosts, 'id');
 
-      console.log('-------------locations-------------');
-      console.log(locations);
+      // console.log('-------------locations-------------');
+      // console.log(locations);
 
-      console.log('-------------virtualhosts----------');
-      console.log(virtualhosts);
+      // console.log('-------------virtualhosts----------');
+      // console.log(virtualhosts);
 
 
       var vhostsConverted = [];
 
       for (var i in virtualhosts) {
-        console.log(virtualhosts[i]);
+        // console.log(virtualhosts[i]);
         virtualhosts[i].locations = locations[virtualhosts[i].id]; // It will work now
       }
 
-      console.log('-------------virtualhosts populed----------');
-      console.log(vhostsConverted);
+      // console.log('-------------virtualhosts populed----------');
+      // console.log(vhostsConverted);
 
       return res.view('nginx', {
         virtualhosts: virtualhosts
