@@ -4,24 +4,24 @@ describe('VirtualhostController', function() {
 
   describe('#get()', function() {
     it('should generate nginx config file', function (done) {
-      this.timeout(15000);
       request(sails.hooks.http.app)
         .get('/virtualhost')
-        .expect(200)
+        .expect(200, done)
         .end(function(err, res) {
           if (err) throw err;
+          done();
         })
     });
   });
 
   describe('#nginx()', function() {
     it('should generate nginx config file', function (done) {
-      this.timeout(15000);
       request(sails.hooks.http.app)
         .get('/virtualhost/nginx')
-        .expect(200)
+        .expect(200, done)
         .end(function(err, res) {
           if (err) throw err;
+          done();
         })
     });
   });
