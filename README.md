@@ -1,3 +1,3 @@
 # nginx-config-api
 
-a [Sails](http://sailsjs.org) application
+A simple API to generate Nginx reverse proxy configuration.
