@@ -27,34 +27,52 @@ module.exports = {
   nginx: function (req, res) {
 
     Virtualhost
-      .find()
-      .populate('aliases')
-      .populate('locations')
-      .then(function(virtualhost) {
-        var locationBackends = Location.find({
-            id: _.pluck(virtualhost.locations, 'backends')
-              //_.pluck: Retrieves the value of a 'user' property from all elements in the virtualhost.locations collection.
-          })
-          .then(function(locationBackends) {
-            return locationBackends;
-          });
-        return [virtualhost, locationBackends];
-      })
-      .spread(function(virtualhost, locationBackends) {
-        locationBackends = _.indexBy(locationBackends, 'id');
-        //_.indexBy: Creates an object composed of keys generated from the results of running each element of the collection through the given callback. The corresponding value of each key is the last element responsible for generating the key
-        virtualhost.locations = _.map(virtualhost.locations, function(location) {
-          location.backedn = locationBackends[location.backend];
-          return location;
+    .find()
+    .populateAll()
+    .then(function (virtualhosts) {
+        var locations = Location.find()
+        .populate('backends')
+        .then(function (locations){
+            return locations;
         });
-        // res.json(virtualhost);
-        var virtualhosts = JSON.stringify(virtualhost);
-        return res.view("nginx", {virtualhosts: JSON.parse(virtualhosts)});
-      })
-      .catch(function(err) {
-        return res.serverError(err);
+        return [virtualhosts, locations];
+    })
+    .spread(function (virtualhosts, locations) {
+      if (locations === undefined) {
+        return res.view('nginx', {
+          virtualhosts: virtualhosts
+        });
+      }
+
+      locations = _.indexBy(locations, 'virtualhost');
+      virtualhosts = _.indexBy(virtualhosts, 'id');
+
+      console.log('-------------locations-------------');
+      console.log(locations);
+
+      console.log('-------------virtualhosts----------');
+      console.log(virtualhosts);
+
+
+      var vhostsConverted = [];
+
+      for (var i in virtualhosts) {
+        console.log(virtualhosts[i]);
+        virtualhosts[i].locations = locations[virtualhosts[i].id]; // It will work now
+      }
+
+      console.log('-------------virtualhosts populed----------');
+      console.log(vhostsConverted);
+
+      return res.view('nginx', {
+        virtualhosts: virtualhosts
       });
+    }).catch(function (err){
+        if (err) return res.serverError(err);
+    });
+
 
   }
+
 };
 
