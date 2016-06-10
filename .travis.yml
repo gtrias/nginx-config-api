@@ -8,5 +8,6 @@ services:
 
 install:
   - docker build -t gtrias/nginx-config-api .
+  - npm install
 
 script: npm test
