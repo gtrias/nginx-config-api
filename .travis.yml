@@ -1,4 +1,12 @@
 language: node_js
 node_js:
   - "6.2"
+
+sudo: required
+services:
+  - docker
+
+install:
+  - docker build -t gtrias/nginx-config-api .
+
 script: npm test
