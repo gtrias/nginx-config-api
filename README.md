@@ -11,8 +11,8 @@ docker run -d --name nginx-config-api -p <public>:1337 gtrias/nginx-config-api
 
 ## How it works
 
-The API register the hosts comming from remote RESTful calls to its database, the basic
-body of a virtualhost is the next:
+The API registers the hosts comming from remote RESTful calls to its database, the basic
+body of a virtualhost is as follows:
 
 POST /virtualhost
 
@@ -36,7 +36,7 @@ POST /virtualhost
 }
 ```
 
-To the next Configuration:
+The API will populate a valid nginx reverse proxy configuration file calling the following endpoint:
 
 GET /virtualhost/nginx
 
@@ -76,7 +76,7 @@ To be consumed by nginx container.
 
 ## Launching the full stack with docker-compose
 
-First install docker compose [Instructions], then:
+First install docker compose ([Instructions]), then:
 
 ```
 docker-compose up -d
