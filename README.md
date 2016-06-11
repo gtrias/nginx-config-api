@@ -1,6 +1,7 @@
 # nginx-config-api [![Build status][build svg]][build status]
 
 A simple API to generate Nginx reverse proxy configuration.
+This is a WIP so it's not already suitable for production.
 
 ## Run using docker
 
@@ -80,7 +81,6 @@ First install docker compose [Instructions], then:
 ```
 docker-compose up -d
 ```
-
 ## Manual install
 
 First clone this repository and then
@@ -91,6 +91,12 @@ npm install
 npm app.js --prod
 ```
 
+## docker-api-registar
+
+You can use (docker-api-registar) to autoregister docker containers (WIP)
+
+
+
 ## Running tests
 
 ```
@@ -100,3 +106,4 @@ npm test
 [build status]: https://travis-ci.org/gtrias/nginx-config-api
 [build svg]: https://travis-ci.org/gtrias/nginx-config-api.svg?branch=master
 [Instructions]: https://docs.docker.com/compose/install/
+[docker-api-registar]: https://github.com/gtrias/docker-api-registrar
