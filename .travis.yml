@@ -13,7 +13,7 @@ install:
 
 script:
   - npm test
-  - docker ps | grep -q
+  - docker ps | grep -q nginx-config-api
 
 after_success:
   - if [ "$TRAVIS_BRANCH" == "master" ]; then
