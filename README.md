@@ -93,8 +93,7 @@ npm app.js --prod
 
 ## docker-api-registar
 
-You can use (docker-api-registar) to autoregister docker containers (WIP)
-
+You can use [docker-api-registar] to autoregister docker containers (WIP)
 
 
 ## Running tests
