@@ -1,0 +1,5 @@
+nginx-config-api:
+  image: gtrias/nginx-config-api
+
+nginx:
+  image: nginx
