@@ -9,6 +9,7 @@ services:
 install:
   - docker build -t gtrias/nginx-config-api .
   - docker run -d --name nginx-config-api gtrias/nginx-config-api
+  - docker logs nginx-config-api
   - npm install
 
 script:
