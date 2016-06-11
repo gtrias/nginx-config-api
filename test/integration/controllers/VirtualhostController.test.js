@@ -5,23 +5,22 @@ describe('VirtualhostController', function() {
   describe('#post()', function() {
     it('should create new virtualhost', function (done) {
       payload = {
-        "name": "genar.me",
-        "portsPlain": "80",
-        "locations": {
-          "path": "/",
-          "backends": [
-          {
-            "ip": "8.8.8.8",
-            "ports": "80"
-          },
-          {
-            "ip": "8.8.8.6",
-            "ports": "8080"
+          "name": "yourappdomain.net",
+          "portsPlain": "80",
+          "locations": {
+            "path": "/",
+            "backends": [
+               {
+                   "ip": "123.123.123.123",
+                   "ports": "80"
+                },
+                {
+                   "ip": "125.126.178.132",
+                   "ports": "8080"
+                }
+            ]
           }
-
-          ]
-        }
-      };
+        };
 
       payload = JSON.stringify(payload);
 
