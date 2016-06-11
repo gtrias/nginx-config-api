@@ -1,7 +1,13 @@
 FROM node
 
-RUN npm install -g forever
+MAINTAINER Genar <genar@acs.li>
+
+RUN npm install -g forever sails
+
+COPY . /app
+
+WORKDIR /app
 
 ENV NODE_ENV production
 
-ENTRYPOINT forever start app.js
+ENTRYPOINT node app.js

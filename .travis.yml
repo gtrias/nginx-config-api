@@ -8,9 +8,12 @@ services:
 
 install:
   - docker build -t gtrias/nginx-config-api .
+  - docker run -d --name nginx-config-api gtrias/nginx-config-api
   - npm install
 
-script: npm test
+script:
+  - npm test
+  - docker ps | grep -q
 
 after_success:
   - if [ "$TRAVIS_BRANCH" == "master" ]; then
