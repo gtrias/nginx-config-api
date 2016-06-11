@@ -10,3 +10,8 @@ mongo:
 
 nginx:
   image: nginx
+
+dockerApiRegistrar:
+  image: gtrias/docker-api-registrar
+  links:
+    - nginxConfigApi:nginxApi
