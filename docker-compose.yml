@@ -13,5 +13,7 @@ nginx:
 
 dockerApiRegistrar:
   image: gtrias/docker-api-registrar
+  volumes:
+    - /var/run/docker.sock:/var/run/docker.sock
   links:
     - nginxConfigApi:nginxApi
