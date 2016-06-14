@@ -2,11 +2,13 @@
   <% _.each(host.locations, function (location) { %>
   upstream <%= host.id %>_<%= location.id %> {
     <% _.each(location.backends, function (backend) { %>
-        server <%= backend.ip %>:<%= backend.ports %>
+        server <%= backend.ip %>:<%= backend.ports %>;
     <% }) %>
   }
   <% }) %>
   server {
+    # listen port;
+    # listen port ssl;
     server_name <%= host.name %>;
     proxy_buffering off;
     error_log /proc/self/fd/2;

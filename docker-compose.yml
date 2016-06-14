@@ -1,15 +1,15 @@
-nginxConfigApi:
-  image: gtrias/nginx-config-api
-  ports:
-    - 1337
-  links:
-    - mongo
-
 mongo:
   image: mongo
 
 nginx:
   image: nginx
+
+nginxConfigApi:
+  image: gtrias/nginx-config-api
+  ports:
+    - 1337:1337
+  links:
+    - mongo
 
 dockerApiRegistrar:
   image: gtrias/docker-api-registrar
