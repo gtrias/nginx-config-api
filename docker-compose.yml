@@ -2,7 +2,7 @@ mongo:
   image: mongo
 
 nginx:
-  image: nginx
+  image: gtrias/plugged-nginx
 
 nginxConfigApi:
   image: gtrias/nginx-config-api

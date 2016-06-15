@@ -14,6 +14,7 @@ script:
   - npm test
   - docker run -d --name nginx-config-api gtrias/nginx-config-api
   - docker ps | grep -q nginx-config-api
+  - docker-compose up -d
 
 after_success:
   - if [ "$TRAVIS_BRANCH" == "master" ]; then
