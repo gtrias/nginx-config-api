@@ -9,7 +9,9 @@ module.exports = {
 
   attributes: {
     name: {
-      type: 'string'
+      type: 'string',
+      required: true,
+      unique: true
     },
     sslCert: {
       type: 'string'
@@ -21,7 +23,8 @@ module.exports = {
       type: 'string'
     },
     portsPlain: {
-      type: 'string'
+      type: 'string',
+      required: true
     },
     portsSsl: {
       type: 'string'
