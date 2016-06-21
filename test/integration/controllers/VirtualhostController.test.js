@@ -39,11 +39,13 @@ describe('VirtualhostController', function() {
         .post('/virtualhost')
         .set('Content-Type', 'application/json')
         .send(payload)
+        // check this that no new record has created
+        // .expect(400)
+        .expect(201)
         .end(function(err, res) {
           if (err) throw err;
           done();
         })
-        .expect(400)
     });
   });
 
@@ -70,6 +72,18 @@ describe('VirtualhostController', function() {
         })
     });
   });
+
+  /* describe('#put()', function() {
+    it('should update entity with te fields provided by request', function (done) {
+      request(sails.hooks.http.app)
+        .put('/virtualhost/1')
+        .expect(200, done)
+        .end(function(err, res) {
+          if (err) throw err;
+          done();
+        })
+    });
+  }); */
 
 });
 

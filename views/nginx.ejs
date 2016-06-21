@@ -1,6 +1,6 @@
 <% _.each(virtualhosts, function (host) { %>
   <% _.each(host.locations, function (location) { %>
-  upstream <%= host.id %>_<%= location.id %> {
+  upstream <%= host.name %>_<%= location.id %> {
     <% _.each(location.backends, function (backend) { %>
         server <%= backend.ip %>:<%= backend.ports %>;
     <% }) %>
@@ -16,7 +16,7 @@
 
     <% _.each(host.locations, function (location) { %>
     location <%= location.path %> {
-      proxy_pass http://<%= host.id %>_<%= location.id %>;
+      proxy_pass http://<%= host.name %>_<%= location.id %>;
       proxy_set_header Host $http_host;
       proxy_set_header X-Real-IP $remote_addr;
       proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
