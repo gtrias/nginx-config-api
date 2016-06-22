@@ -9,10 +9,12 @@ module.exports = {
 
   attributes: {
     ip: {
-      type: 'string'
+      type: 'string',
+      primaryKey: true
     },
     ports: {
-      type: 'string'
+      type: 'string',
+      primaryKey: true
     },
     lastSeen: {
       type: 'datetime'
@@ -21,7 +23,8 @@ module.exports = {
       type: 'boolean'
     },
     location: {
-      model: 'location'
+      model: 'location',
+      primaryKey: true
     }
   }
 };

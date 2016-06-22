@@ -29,6 +29,6 @@ module.exports.models = {
   ***************************************************************************/
   migrate: 'drop',
 
-  schema: true
-
+  schema: true,
+  autoPK: false
 };

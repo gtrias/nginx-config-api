@@ -9,10 +9,12 @@ module.exports = {
 
   attributes: {
     path: {
-      type: 'string'
+      type: 'string',
+      primaryKey: true
     },
     virtualhost: {
-      model: 'virtualhost'
+      model: 'virtualhost',
+      primaryKey: true
     },
     backends: {
       collection: 'backend',
