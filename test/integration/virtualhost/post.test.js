@@ -10,7 +10,7 @@ var client = restify.createJsonClient({
 // Test #1
 describe('201 response check', function() {
     it('should get a 201 response', function(done) {
-        client.post('/virtualhost', { hello: 'world' }, function(err, req, res, data) {
+        client.put('/virtualhost/example.com', { hello: 'world' }, function(err, req, res, data) {
             if (err) {
                 throw new Error(err);
             }

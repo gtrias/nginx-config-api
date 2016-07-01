@@ -2,7 +2,7 @@ var restify = require('restify');
 
 var server = restify.createServer();
 
-server.post('/virtualhost/:url', function virtualHostPost(req, res, next) {
+server.put('/virtualhost/:url', function virtualHostPost(req, res, next) {
   res.send('hello ' + req.params.name);
   next();
 });
