@@ -13,10 +13,8 @@ describe('201 response check', function() {
         client.put('/virtualhost/example.com', { hello: 'world' }, function(err, req, res, data) {
             if (err) {
                 throw new Error(err);
-            }
-            else {
-
-                if (data.code != 200) {
+            } else {
+                if (res.statusCode != 201) {
                     throw new Error('invalid response from /post');
                 }
                 done();
