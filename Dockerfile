@@ -8,7 +8,7 @@ COPY . /app
 
 WORKDIR /app
 
-RUN npm install -g sails && npm install
+RUN npm install
 
 ENV NODE_ENV production
 

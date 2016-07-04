@@ -5,6 +5,7 @@
   "description": "a Sails application",
   "keywords": [],
   "dependencies": {
+    "config": "^1.21.0",
     "nedb": "^1.8.0",
     "restify": "^4.1.1"
   },
