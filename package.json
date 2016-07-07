@@ -6,8 +6,11 @@
   "keywords": [],
   "dependencies": {
     "config": "^1.21.0",
+    "ejs": "^2.4.2",
     "nedb": "^1.8.0",
-    "restify": "^4.1.1"
+    "nginx-conf": "^1.2.0",
+    "restify": "^4.1.1",
+    "underscore": "^1.8.3"
   },
   "scripts": {
     "debug": "node debug app.js",

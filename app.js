@@ -2,29 +2,29 @@ var restify = require('restify'),
     config = require('config'),
     Datastore = require('nedb');
 
-if (process.env.NODE_ENV === 'production') {
+// if (process.env.NODE_ENV === 'production') {
   var db = new Datastore({ filename: config.get('datastore'), autoload: true });
-} else {
-  var db = new Datastore();
-}
+// } else {
+  // var db = new Datastore();
+// }
 
 // restify instance.
 var server = restify.createServer();
+server.use(restify.bodyParser());
 
 // Loading datastore
 db.loadDatabase();
 
 db.ensureIndex({ fieldName: 'name', unique: true });
 
-server.put('/virtualhost/:url', function virtualHostPost(req, res, next) {
+server.put('/virtualhost/:name', function virtualHostPost(req, res, next) {
   console.log("Pushing " + req.params.url);
 
-  doc = {
-    name: req.params.url
-  }
+  console.log(req.params);
+
+  var doc = req.params;
 
   db.insert(doc, function (err) {
-    // console.log(err);
     console.log(doc);
     if (err) {
       db.update({ name: req.params.url }, doc, { returnUpdatedDocs: true }, function (err, numReplaced, doc) {
@@ -46,6 +46,16 @@ server.put('/virtualhost/:url', function virtualHostPost(req, res, next) {
 
   res.status(200);
   next();
+});
+
+
+server.get('/nginx', function generateNginxConfig(req, res, next) {
+  var virtualHosts = db.find({}, function (err, virtualHosts) {
+    var nginx = require('./nginx');
+    nginx.generateConfFile(virtualHosts);
+    res.status(200);
+    next();
+  });
 });
 
 server.listen(8080, function() {
