@@ -2,11 +2,11 @@ var restify = require('restify'),
     config = require('config'),
     Datastore = require('nedb');
 
-// if (process.env.NODE_ENV === 'production') {
+if (process.env.NODE_ENV === 'production') {
   var db = new Datastore({ filename: config.get('datastore'), autoload: true });
-// } else {
-  // var db = new Datastore();
-// }
+} else {
+  var db = new Datastore();
+}
 
 // restify instance.
 var server = restify.createServer();
@@ -18,7 +18,7 @@ db.loadDatabase();
 db.ensureIndex({ fieldName: 'name', unique: true });
 
 server.put('/virtualhost/:name', function virtualHostPost(req, res, next) {
-  console.log("Pushing " + req.params.url);
+  console.log("Pushing " + req.params.name);
 
   console.log(req.params);
 
