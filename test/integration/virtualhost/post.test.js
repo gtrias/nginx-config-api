@@ -33,8 +33,8 @@ describe('200 response check', function() {
               if (res.statusCode != 200) {
                   throw new Error('invalid response from /virtualhost/example.com');
               }
-              done();
           }
+          return done();
       });
     });
 });

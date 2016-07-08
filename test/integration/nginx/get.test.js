@@ -10,15 +10,15 @@ var client = restify.createJsonClient({
 // Test #1
 describe('200 response check', function() {
     it('should get a 200 response', function(done) {
-        client.get('/nginx', function(err, req, res, data) {
+        client.get('/nginx', function (err, req, res, data) {
             if (err) {
                 throw new Error(err);
             } else {
                 if (res.statusCode != 200) {
                     throw new Error('invalid response from /virtualhost/example.com');
                 }
-                done();
             }
         });
+        return done();
     });
 });
